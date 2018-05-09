@@ -30,7 +30,7 @@ class ApikeyExceptionListener extends ExceptionListener
 
         do {
             if ($ex instanceof AuthenticationException) {
-                $event->setException(new UnauthorizedHttpException(null, 'Unauthorized'));
+                $event->setException(new UnauthorizedHttpException('Bearer realm="api"', 'Unauthorized'));
             } elseif ($ex instanceof AccessDeniedException) {
                 $event->setException(new AccessDeniedHttpException('Forbidden'));
             } elseif ($ex instanceof LogoutException) {
